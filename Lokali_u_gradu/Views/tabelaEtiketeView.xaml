@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="Lokali_u_gradu.Views.tabelaEtiketeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lokali_u_gradu.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBox x:Name="txtPretraga" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,10,68,10" TextChanged="txtPretraga_TextChanged"/>
+        <Image x:Name="lupaIMG" Source="D:\\6. semestar- VEZBANJE\\HCI\\ProjekatPonovo\\Lokali_u_gradu\\Lokali_u_gradu\\Resursi\\lupa.png" Margin="131,10,20,10" Grid.Column="2"/>
+
+        <!-- tabela etiketa -->
+        <DataGrid x:Name="tableGridEtikete" ItemsSource="{Binding Path=Etikete}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" IsReadOnly="True" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True">
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Oznaka" Width="sizeToCells">
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ID}"/>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Boja" Width="sizeToCells">
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Width="30" Background ="{Binding Boja}"/>
+
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+                </DataGridTemplateColumn>
+
+
+                <DataGridTextColumn Header="Opis" Width="SizeToCells" Binding="{Binding Opis}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="btnDodajEtiketu" Content="Dodaj novu etiketu" FontSize="18" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch"  Grid.Row="2" Grid.Column="0"  VerticalAlignment="Bottom" Height="50" Opacity="0.685" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana" Click="btnDodajEtiketu_Click"/>
+        <Button x:Name="btnIzmeniEtiketu" Content="Izmeni etiketu" FontSize="18" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch"  Grid.Row="2" Grid.Column="1"  VerticalAlignment="Bottom" Height="50" Opacity="0.685" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana" Click="btnIzmeniEtiketu_Click"/>
+        <Button x:Name="btnObrisiEtiketu" Content="Obriši etiketu" FontSize="18" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch"  Grid.Row="2" Grid.Column="2"  VerticalAlignment="Bottom" Height="50" Opacity="0.685" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana" Click="btnObrisiEtiketu_Click"/>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Lokali_u_gradu.Views.formaTipLokalaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lokali_u_gradu.Views"
+             mc:Ignorable="d" 
+            d:DesignHeight="430" d:DesignWidth="550">
+    <Grid>
+
+        <Label Content="Dodavanje tipa lokala" HorizontalAlignment="Left" Margin="15,31,0,0" VerticalAlignment="Top" FontFamily="Bradley Hand ITC" FontSize="20" Height="35" Width="208"/>
+
+        <Label x:Name="lblImeTipaLokala" Content="Ime:" HorizontalAlignment="Left" Margin="15,78,0,0" VerticalAlignment="Top" Height="26" Width="35"/>
+        <TextBox x:Name="txtImeTipaL" HorizontalAlignment="Left" Height="23" Margin="77,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" LostFocus="txtImeTipaL_LostFocus"/>
+        <TextBlock x:Name="imeTipaWarning" HorizontalAlignment="Left" Margin="36,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.058,1.385" Foreground="Red"/>
+
+        <Label x:Name="lblOznakaTipaL" Content="Oznaka:" HorizontalAlignment="Left" Margin="15,120,0,0" VerticalAlignment="Top" Height="26" Width="57"/>
+        <TextBlock x:Name="OznakaTipaWarning" HorizontalAlignment="Left" Margin="210,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.058,1.385" Foreground="Red"/>
+        <TextBox x:Name="txtOznakaTipaL" HorizontalAlignment="Left" Height="23" Margin="77,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" LostFocus="txtOznakaTipaL_LostFocus"/>
+
+
+        <TextBox x:Name="txtOpisTipaL" HorizontalAlignment="Left" MinHeight="50" Margin="77,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="50"/>
+        <Label x:Name="lblOpisTipaL" Content="Opis:" HorizontalAlignment="Left" Margin="15,164,0,0" VerticalAlignment="Top" Height="26" Width="37"/>
+
+        <Label x:Name="lblIkonicaTip" Content="Ikonica:" HorizontalAlignment="Left" Margin="244,80,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnIkonicaTip" Content="Izaberi" HorizontalAlignment="Left" Margin="307,82,0,0" VerticalAlignment="Top" Width="70" Click="btnIkonicaTip_Click"/>
+        <TextBlock x:Name="ikonicaWarning" HorizontalAlignment="Left" Margin="249,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.058,1.385" Foreground="Red"/>
+
+
+        <Button x:Name="btnSacuvaj" Content="Sačuvaj" HorizontalAlignment="Right" Margin="0,299,444,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" Click="btnSacuvaj_Click" Height="22"/>
+        <Button x:Name="btnOdustani" Content="Odustani " HorizontalAlignment="Right" Margin="0,299,353,0" VerticalAlignment="Top" Width="75" Height="22" Click="btnOdustani_Click"/>
+
+        <TextBlock x:Name="postojiWarning" HorizontalAlignment="Left" Margin="10,265,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.058,1.385" Foreground="Red"/>
+        <Image x:Name="ico" HorizontalAlignment="Left" Height="94" Margin="249,120,0,0" VerticalAlignment="Top" Width="128" />
+
+
+
+    </Grid>
+
+</UserControl>

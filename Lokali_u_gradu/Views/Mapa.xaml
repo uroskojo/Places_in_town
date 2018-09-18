@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="Lokali_u_gradu.Views.Mapa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lokali_u_gradu.Views"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="430" d:DesignWidth="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Canvas x:Name="mapa"  AllowDrop="True" DragEnter="pregledLokala_DragEnter" Drop="pregledLokala_Drop" PreviewMouseLeftButtonDown="mapa_PreviewMouseLeftButtonDown" MouseMove="mapa_MouseMove">
+            <Image x:Name="slikaMape" Height="430" Width="550" Stretch="Fill"/>
+            <Image x:Name="kanta" DragEnter="kanta_DragEnter" AllowDrop="True" Drop="kanta_Drop" Source="D:\\6. semestar- VEZBANJE\\HCI\\ProjekatPonovo\\Lokali_u_gradu\\Lokali_u_gradu\\Resursi\\kanta2.png"  Height="44" Width="53"  Canvas.Top="19" Canvas.Left="459"/>
+
+
+        </Canvas>
+
+
+
+
+    </Grid>
+</UserControl>
