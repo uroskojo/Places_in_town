@@ -1,0 +1,165 @@
+﻿<Window x:Class="Lokali_u_gradu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lokali_u_gradu"
+       
+        xmlns:viewmodels="clr-namespace:Lokali_u_gradu.ViewModels"
+        xmlns:views="clr-namespace:Lokali_u_gradu.Views"
+        local:HelpProvider.HelpKey="pocetna"
+        mc:Ignorable="d"
+        Title="Lokali" Height="430" Width="750" Icon="./Resursi/cityscape.png" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+
+    <Window.Resources>
+
+        <DataTemplate x:Name="MapaTemplate" DataType="{x:Type viewmodels:MapaViewModel}">
+            <views:Mapa DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Name="FormaLokalTemplate" DataType="{x:Type viewmodels:FormaLokalView}">
+            <views:formaLokal DataContext="{Binding}"/>
+        </DataTemplate>
+
+
+        <DataTemplate x:Name="FormaEtiketaTemplate" DataType="{x:Type viewmodels:FormaEtiketa}">
+            <views:formaEtiketaView DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Name="TipLokalaTemplate" DataType="{x:Type viewmodels:FormaTipLokala}">
+            <views:formaTipLokalaView DataContext="{Binding}"/>
+        </DataTemplate>
+
+        <Style x:Key="SmallIcon" TargetType="Image">
+            <Setter Property="MaxWidth" Value="16"/>
+            <Setter Property="MaxHeight" Value="16"/>
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+
+    </Window.Resources>
+
+    <DockPanel RenderTransformOrigin="0.42,0.515">
+
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+               
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="550"/>
+            </Grid.ColumnDefinitions>
+
+            <TreeView x:Name="pregledLokala" Grid.Column="0" Grid.Row="0" Grid.RowSpan="7" Grid.ColumnSpan="3" ItemsSource="{Binding tipoviLokala}" PreviewMouseLeftButtonDown="pregledLokala_PreviewMouseLeftButtonDown" MouseMove="pregledLokala_MouseMove" Visibility="Visible" Margin="0,0,5,0">
+                <TreeView.Resources>
+
+                    <HierarchicalDataTemplate DataType="{x:Type local:TipLokala}" ItemsSource="{Binding lokali}">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Margin="0,0,5,0">
+                                <Image.Style>
+                                    <Style BasedOn="{StaticResource ResourceKey=SmallIcon}" TargetType="Image">
+
+                                        <Setter Property="Source" Value="{Binding Path=Ikonica, Mode=OneTime}"/>
+
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                            <TextBlock Text="{Binding Ime}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+
+                    <DataTemplate DataType="{x:Type local:Lokal}">
+                        <WrapPanel>
+                            <StackPanel Orientation="Horizontal">
+
+                                <Image Margin="0,0,5,0" Source="{Binding Path=Ikonica}">
+                                    <Image.Style>
+                                        <Style BasedOn="{StaticResource ResourceKey=SmallIcon}" TargetType="Image">
+
+                                        </Style>
+                                    </Image.Style>
+                                </Image>
+                                <TextBlock Text="{Binding Ime}"/>
+
+                            </StackPanel>
+                        </WrapPanel>
+                    </DataTemplate>
+
+
+                </TreeView.Resources>
+            </TreeView>
+
+            <ContentControl Grid.Column="3" Grid.Row="0"  Grid.RowSpan="9" Content="{Binding}"/>
+
+            <Button x:Name="btnTabelaLokal" Content="Lokali" FontSize="16" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="7"   Grid.Column="0"   Click="btnTabelaLokal_Click" Opacity="0.43" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                        <GradientStop Color="#FFBFB4B4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="btnTabelaTipovi" Content="Tipovi" FontSize="16" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="7"   Grid.Column="1"   Click="btnTabelaTipovi_Click" Opacity="0.43" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                        <GradientStop Color="#FFBFB4B4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="btnTabelaEtikete" Content="Etikete" FontSize="16" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="7"   Grid.Column="2"   Click="btnTabelaEtikete_Click" Opacity="0.43" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                        <GradientStop Color="#FFBFB4B4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="btnOcisti" Content="Očisti mapu"  Visibility="Visible" FontSize="30" Foreground="#FF1A2F98"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Row="8"   Grid.Column="0" Grid.ColumnSpan="3" Click="btnOcisti_Click" Opacity="0.43" BorderThickness="1" BorderBrush="#FF9C9595" FontFamily="Verdana">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                        <GradientStop Color="#FFBFB4B4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+
+
+        </Grid>
+
+
+
+    </DockPanel>
+
+
+
+</Window>
